@@ -1,0 +1,719 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /api/answers/{id}/:
+    get:
+      operationId: retrieveAnswer
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this answer.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Answer'
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updateAnswer
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this answer.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Answer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Answer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Answer'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Answer'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdateAnswer
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this answer.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Answer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Answer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Answer'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Answer'
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: destroyAnswer
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this answer.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
+  /api/polls/active/:
+    get:
+      operationId: listPolls
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DetailedPoll'
+          description: ''
+      tags:
+      - api
+  /api/polls/passed/{user_id}:
+    get:
+      operationId: retrieveAnsweredPoll
+      description: ''
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnsweredPoll'
+          description: ''
+      tags:
+      - api
+  /api/polls/:
+    get:
+      operationId: listPolls
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PollRetrieve'
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createPoll
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PollCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PollCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PollCreate'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PollCreate'
+          description: ''
+      tags:
+      - api
+  /api/polls/{id}/:
+    get:
+      operationId: retrievePoll
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this poll.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PollRetrieve'
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updatePoll
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this poll.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PollRetrieve'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PollRetrieve'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PollRetrieve'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PollRetrieve'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdatePoll
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this poll.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PollRetrieve'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PollRetrieve'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PollRetrieve'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PollRetrieve'
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: destroyPoll
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this poll.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
+  /api/questions/:
+    get:
+      operationId: listQuestions
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/QuestionRetrieve'
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createQuestion
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuestionCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/QuestionCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/QuestionCreate'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuestionCreate'
+          description: ''
+      tags:
+      - api
+  /api/questions/{id}/:
+    get:
+      operationId: retrieveQuestion
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this question.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuestionRetrieve'
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updateQuestion
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this question.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuestionRetrieve'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/QuestionRetrieve'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/QuestionRetrieve'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuestionRetrieve'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdateQuestion
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this question.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuestionRetrieve'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/QuestionRetrieve'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/QuestionRetrieve'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuestionRetrieve'
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: destroyQuestion
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this question.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
+  /api/obtain-token/:
+    post:
+      operationId: createAuthToken
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthToken'
+          description: ''
+      tags:
+      - api
+  /api/answer-question/:
+    post:
+      operationId: createAnswerQuestion
+      description: 'Ответ в виде строки или ID в зависимости от типа вопроса'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Result'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Result'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Result'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: { }
+          description: ''
+      tags:
+        - api
+components:
+  schemas:
+    Answer:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        text:
+          type: string
+      required:
+      - text
+    DetailedPoll:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        questions:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              answers:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    text:
+                      type: string
+                  required:
+                  - text
+                readOnly: true
+              text:
+                type: string
+              type:
+                enum:
+                - 1
+                - 2
+                - 3
+                type: integer
+              poll:
+                type: integer
+            required:
+            - text
+            - type
+            - poll
+        name:
+          type: string
+          maxLength: 100
+        date_start:
+          type: string
+          format: date-time
+        date_end:
+          type: string
+          format: date-time
+        description:
+          type: string
+      required:
+      - questions
+      - name
+      - date_start
+      - date_end
+    AnsweredPoll:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        questions:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              answers:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    text:
+                      type: string
+                  required:
+                  - text
+                readOnly: true
+              selected_answers:
+                type: string
+                readOnly: true
+              text:
+                type: string
+              type:
+                enum:
+                - 1
+                - 2
+                - 3
+                type: integer
+              poll:
+                type: integer
+            required:
+            - text
+            - type
+            - poll
+        name:
+          type: string
+          maxLength: 100
+        date_start:
+          type: string
+          format: date-time
+        date_end:
+          type: string
+          format: date-time
+        description:
+          type: string
+      required:
+      - questions
+      - name
+      - date_start
+      - date_end
+    PollRetrieve:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        date_start:
+          type: string
+          format: date-time
+          readOnly: true
+        date_end:
+          type: string
+          format: date-time
+        description:
+          type: string
+      required:
+      - name
+      - date_end
+    QuestionRetrieve:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        answers:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              text:
+                type: string
+            required:
+            - text
+          readOnly: true
+        text:
+          type: string
+        type:
+          enum:
+          - 1
+          - 2
+          - 3
+          type: integer
+        poll:
+          type: integer
+      required:
+      - text
+      - type
+      - poll
+    AuthToken:
+      type: object
+      properties:
+        username:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+        token:
+          type: string
+          readOnly: true
+      required:
+      - username
+      - password
+    PollCreate:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        date_start:
+          type: string
+          format: date-time
+        date_end:
+          type: string
+          format: date-time
+        description:
+          type: string
+      required:
+      - name
+      - date_start
+      - date_end
+    QuestionCreate:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        answers:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              text:
+                type: string
+            required:
+            - text
+        text:
+          type: string
+        type:
+          enum:
+          - 1
+          - 2
+          - 3
+          type: integer
+        poll:
+          type: integer
+      required:
+      - text
+      - type
+      - poll
+    Result:
+      type: object
+      properties:
+        user_id:
+          type: integer
+        question_id:
+          type: integer
+        answer_id:
+          type: integer
+        answer:
+          type: string
+      required:
+        - question_id
